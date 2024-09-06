@@ -1,1 +1,5 @@
-# GameOfLife
+# GameOfLife Recoded
+
+## Authors:
+### Milo
+### Youssef

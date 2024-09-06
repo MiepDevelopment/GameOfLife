@@ -1,5 +1,6 @@
 function createGameOfLife(canvasId, statusId, cellSize = 10) {
   const canvas = document.getElementById(canvasId);
+  const colorPicker = document.getElementById("colorPicker");
   const ctx = canvas.getContext("2d");
   const statusElement = document.getElementById(statusId);
   const cols = Math.floor(canvas.width / cellSize);
@@ -78,7 +79,7 @@ function createGameOfLife(canvasId, statusId, cellSize = 10) {
   }
 
   function drawGrid() {
-    ctx.strokeStyle = "#ccc";
+    ctx.strokeStyle = "#ccccc";
     ctx.lineWidth = 0.5;
     for (let i = 0; i <= rows; i++) {
       ctx.beginPath();
@@ -96,13 +97,16 @@ function createGameOfLife(canvasId, statusId, cellSize = 10) {
 
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
     if (showGrid) {
       drawGrid();
     }
+
+    ctx.fillStyle = colorPicker.value;
+    
     for (let row = 0; row < rows; row++) {
       for (let col = 0; col < cols; col++) {
         if (grid[row][col]) {
-          ctx.fillStyle = "black";
           ctx.fillRect(col * cellSize, row * cellSize, cellSize, cellSize);
         }
       }
@@ -113,7 +117,7 @@ function createGameOfLife(canvasId, statusId, cellSize = 10) {
     if (!isRunning) {
       isRunning = true;
       run();
-      updateStatus("Started the simulation");
+      updateStatus("Started simulating");
     }
   }
 
@@ -123,7 +127,7 @@ function createGameOfLife(canvasId, statusId, cellSize = 10) {
       if (intervalId) {
         clearInterval(intervalId);
       }
-      updateStatus("Stopped the simulation");
+      updateStatus("Stopped simulating");
     }
   }
 
@@ -137,7 +141,7 @@ function createGameOfLife(canvasId, statusId, cellSize = 10) {
   function toggleGrid() {
     showGrid = !showGrid;
     draw();
-    updateStatus(showGrid ? "Showed grid lines" : "Hid grid lines");
+    updateStatus(showGrid ? "Showed grid/cellboxes" : "Hid grid/cellboxes");
   }
 
   function updateStatus(message) {
