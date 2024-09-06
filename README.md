@@ -19,12 +19,12 @@
 
 ## Youssef:
 ## Positief:
-### 1. NA
-### 2. NA
+### 1. Een goede presentatie met als gevolg: een succesvolle afronding.
+### 2. Goede samenwerking en communicatie met Milo.
 
 ## Negatief:
-### 1. NA
-### 2. NA
+### 1. Gebrek aan planning.
+### 2. Taakverdeling.
 
 ## Mohammed:
 ## Positief:
