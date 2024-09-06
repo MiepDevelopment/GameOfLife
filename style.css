@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+canvas {
+    border: 1px solid #000;
+    margin-bottom: 10px;
+}
+
+button {
+    margin: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+
+#statusText {
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#sizeSlider {
+    margin-right: 10px;
+}
+
+.controls-info {
+    margin-top: 20px;
+    text-align: center;
+}
