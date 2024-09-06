@@ -8,7 +8,7 @@ function createGameOfLife(canvasId, statusId, cellSize = 10) {
   let grid = createGrid();
   let isRunning = false;
   let intervalId = null;
-  let showGrid = false;
+  let showGrid = true;
   let randomAreaSize = 100; // Default size (%)
 
   function createGrid() {
@@ -97,13 +97,13 @@ function createGameOfLife(canvasId, statusId, cellSize = 10) {
 
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
+
     if (showGrid) {
       drawGrid();
     }
 
     ctx.fillStyle = colorPicker.value;
-    
+
     for (let row = 0; row < rows; row++) {
       for (let col = 0; col < cols; col++) {
         if (grid[row][col]) {
@@ -242,10 +242,17 @@ window.onload = function () {
 
   document.getElementById("startBtn").addEventListener("click", game.start);
   document.getElementById("stopBtn").addEventListener("click", game.stop);
-  document.getElementById("clearBtn").addEventListener("click", game.clear);
+  document.getElementById("clearBtn").addEventListener("click", function () {
+    game.stop(); game.clear();
+  });
+
   document
     .getElementById("randomBtn")
-    .addEventListener("click", game.randomize);
+    .addEventListener("click", function () {
+      game.clear();
+      game.randomize();
+    });
+
   document
     .getElementById("toggleGridBtn")
     .addEventListener("click", game.toggleGrid);
@@ -253,7 +260,7 @@ window.onload = function () {
   const sizeSlider = document.getElementById("sizeSlider");
   sizeSlider.addEventListener("input", function () {
     game.setRandomAreaSize(this.value);
-    document.getElementById("sizeValue").textContent = this.value + "%";
+    document.getElementById("sizeValue").textContent = "Random Area Size " + this.value + "%";
   });
 
   game.draw();
