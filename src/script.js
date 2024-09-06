@@ -159,20 +159,20 @@ function createGameOfLife(canvasId, statusId, cellSize = 10) {
 
     switch (shape) {
       case "I":
-        for (let i = -5; i <= 5; i++) {
+        for (let i = -8; i <= 8; i++) {
           if (centerRow + i >= 0 && centerRow + i < rows) {
             grid[centerRow + i][centerCol] = 1;
           }
         }
         break;
       case "H":
-        for (let i = -5; i <= 5; i++) {
+        for (let i = -8; i <= 8; i++) {
           if (centerRow + i >= 0 && centerRow + i < rows) {
-            grid[centerRow + i][centerCol - 2] = 1;
-            grid[centerRow + i][centerCol + 2] = 1;
+            grid[centerRow + i][centerCol - 4] = 1;
+            grid[centerRow + i][centerCol + 4] = 1;
           }
         }
-        for (let j = -2; j <= 2; j++) {
+        for (let j = -3; j <= 3; j++) {
           if (centerCol + j >= 0 && centerCol + j < cols) {
             grid[centerRow][centerCol + j] = 1;
           }
@@ -218,6 +218,7 @@ function createGameOfLife(canvasId, statusId, cellSize = 10) {
   function handleKeyPress(event) {
     const key = event.key.toUpperCase();
     if (["I", "H", "O", "S"].includes(key)) {
+      clear();
       drawShape(key);
     }
   }
@@ -243,7 +244,8 @@ window.onload = function () {
   document.getElementById("startBtn").addEventListener("click", game.start);
   document.getElementById("stopBtn").addEventListener("click", game.stop);
   document.getElementById("clearBtn").addEventListener("click", function () {
-    game.stop(); game.clear();
+    game.stop();
+    game.clear();
   });
 
   document
